@@ -4,6 +4,7 @@ import {TasksType, Todolist} from "./Todolist";
 
 export type FilterValueType = 'all' | 'active' | 'completed'
 
+
 function App() {
 
     let [myTasks, setTasks] = useState<Array<TasksType>>([
@@ -20,25 +21,25 @@ function App() {
         setTasks(myNewTasks)
     }
 
-    const changeFilterValue = (value: FilterValueType) => {
+    const changeFilter = (value: FilterValueType) => {
         setFilter(value)
     }
 
-    let tasksWithValue = myTasks
+    let taskFilterValue = myTasks
     if (filter === 'active') {
-        tasksWithValue = myTasks.filter( t => !t.isDone)
+        taskFilterValue = myTasks.filter( t => !t.isDone)
     }
     if (filter === 'completed') {
-        tasksWithValue = myTasks.filter( t => t.isDone)
+        taskFilterValue = myTasks.filter( t => t.isDone)
     }
+
 
     return (
         <div className="App">
            <Todolist title={'What to learn'}
-                     tasks={tasksWithValue}
+                     tasks={taskFilterValue}
                      removeTask={removeTask}
-                     changeFilterValue={changeFilterValue}
-
+                     changeFilter={changeFilter}
            />
         </div>
     );

@@ -12,13 +12,13 @@ export type PropsType = {
     title: string
     tasks: Array<TasksType>
     removeTask: (id: number) => void
-    changeFilterValue: (value: FilterValueType) => void
+    changeFilter: (value: FilterValueType) => void
 }
 
 export function Todolist(props: PropsType) {
 
     const tsarFilter = (value: FilterValueType) => {
-        props.changeFilterValue(value)
+        props.changeFilter(value)
     }
 
     return (
@@ -38,9 +38,9 @@ export function Todolist(props: PropsType) {
             </ul>
 
 
-            <button onClick={() => {tsarFilter('all')}}>all</button>
-            <button onClick={() => {tsarFilter('active')}}>active</button>
-            <button onClick={() => {tsarFilter('completed')}}>completed</button>
+            <button onClick={() => tsarFilter('all')}>all</button>
+            <button onClick={() => tsarFilter('active')}>active</button>
+            <button onClick={() => tsarFilter('completed')}>completed</button>
         </div>
     );
 }
